@@ -1,2 +1,2 @@
 #!/bin/sh
-echo deployi staging
+echo deploying to staging
