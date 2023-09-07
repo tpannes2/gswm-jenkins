@@ -9,9 +9,9 @@ pipeline {
         }
         stage('Deploy - Staging') {
             steps {
-                chmod +x deploy_staging.sh
+                sh 'chmod +x deploy_staging.sh'
                 sh './deploy_staging.sh'
-                chmod +x run-smoke-tests.sh
+                sh 'chmod +x run-smoke-tests.sh'
                 sh './run-smoke-tests.sh'
             }
         }
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Deploy - Production') {
             steps {
-                chmod +x deploy_production.sh
+                sh 'chmod +x deploy_production.sh'
                 sh './deploy_production.sh'
             }
         }
