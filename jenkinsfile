@@ -10,7 +10,7 @@ pipeline {
         stage('Deploy - Staging') {
             steps {
                 sh './deploy_staging.sh'
-                sh './run-smoke-tests'
+                sh './run-smoke-tests.sh'
             }
         }
 
