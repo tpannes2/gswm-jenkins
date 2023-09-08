@@ -13,6 +13,8 @@ pipeline {
                 sh './deploy_staging.sh'
                 sh 'chmod +x run-smoke-tests.sh'
                 sh './run-smoke-tests.sh'
+                sh 'pwd'
+                sh 'ls -la .'
                 sh 'ls -la /target/gswm-jenkins*.jar'
             }
         }
