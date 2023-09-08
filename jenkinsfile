@@ -17,12 +17,13 @@ pipeline {
                 sh 'scp target/gswm-jenkins*.jar student:miro@192.168.124.109:/opt/gswm/'
             }
         }
-
+        /*
         stage('Sanity check') {
             steps {
                 input "Does the staging environment look ok?"
             }
         }
+        */
 
         stage('Deploy - Production') {
             steps {
