@@ -15,7 +15,7 @@ pipeline {
                 sh './run-smoke-tests.sh'
                 sh 'pwd'
                 sh 'ls -la .'
-                sh 'ls -la /target/gswm-jenkins*.jar'
+                sh 'ls -la target/gswm-jenkins*.jar'
             }
         }
 
