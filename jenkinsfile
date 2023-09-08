@@ -14,10 +14,34 @@ pipeline {
                 sh 'chmod +x run-smoke-tests.sh'
                 sh './run-smoke-tests.sh'
                 sh 'ls -la target/gswm-jenkins*.jar'
-                sh 'apk add openssh'
-                sh 'scp target/gswm-jenkins*.jar student@192.168.124.109:/opt/gswm/'
-            }
+                //sh 'apk add openssh'
+                //sh 'scp target/gswm-jenkins*.jar student@192.168.124.109:/opt/gswm/'
+
+                sshPublisher(
+                        failOnError: true,
+                        continueOnError: false,
+                        publishers: [
+                            sshPublisherDesc(
+                                configName: 'staging',
+                                sshCredentials: [
+                                    username: "student",
+                                    encryptedPassphrase: "miro"
+                                ], 
+                                transfers: [
+                                    sshTransfer(
+                                        sourceFiles: 'target/gswm-jenkins*.jar',
+                                        removePrefix: '',
+                                        remoteDirectory: '/opt/gswm/',
+                                        //execCommand: 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
+                                    )
+                                ]
+                            )
+                        ]
+                    )
+
+                }
         }
+
         /*
         stage('Sanity check') {
             steps {
