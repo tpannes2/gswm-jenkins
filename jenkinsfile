@@ -46,7 +46,7 @@ pipeline {
                             sshPublisherDesc(
                                 configName: 'windoof_box',
                                 sshCredentials: [
-                                    username: "Teilnehnmer",
+                                    username: "Teilnehmer",
                                     encryptedPassphrase: "lw7GTdoz0L"
                                 ], 
                                 transfers: [
