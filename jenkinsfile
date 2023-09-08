@@ -14,6 +14,7 @@ pipeline {
                 sh 'chmod +x run-smoke-tests.sh'
                 sh './run-smoke-tests.sh'
                 sh 'ls -la target/gswm-jenkins*.jar'
+                sh 'sudo apk add openssh'
                 sh 'scp target/gswm-jenkins*.jar student@192.168.124.109:/opt/gswm/'
             }
         }
